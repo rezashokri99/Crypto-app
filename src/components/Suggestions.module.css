@@ -1,0 +1,20 @@
+.suggestsContainer{
+    width: 100%;
+
+}
+
+.suggest div{
+    display: flex;
+    align-items: center;
+}
+
+.suggest .headerSuggest .nameSuggest {
+    margin: 0 5px;
+    color: #222222;
+    font-weight: 600;
+}
+.suggest .headerSuggest .titleSuggest {
+    font-weight: 600;
+    color: #7D7D7D;
+    
+}
