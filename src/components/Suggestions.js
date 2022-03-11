@@ -6,7 +6,9 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import styles from "./Suggestions.module.css";
 
+import { IoMdArrowDropup } from "react-icons/io";
 import logoImage from "../images/logo.png";
+import { Grid } from '@mui/material';
 
 
 
@@ -16,6 +18,7 @@ function TabPanel(props) {
 
   return (
     <div
+      style={{width: "100%"}}
       role="tabpanel"
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
@@ -23,8 +26,8 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box style={{padding: "20px 10px"}} sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+        <Box style={{padding: "20px 10px", width: "100%"}} sx={{ p: 3 }}>
+          <Typography component="div" style={{width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between"}}>{children}</Typography>
         </Box>
       )}
     </div>
@@ -60,10 +63,10 @@ export default function BasicTabs() {
           <Tab label="lowest profit" {...a11yProps(2)} />
         </Tabs>
       </Box>
-      <TabPanel className={styles.suggestsContainer} value={value} index={0}>
-        <div className={styles.suggest}>
+      <TabPanel component="div" className={styles.suggestsContainer} value={value} index={0}>
+      <div className={styles.suggest}>
             <div className={styles.headerSuggest}>
-                <img className={styles.logoSuggest} src={logoImage} alt="logo" style={{width: "30px"}} />
+                <img className={styles.logoSuggest} src={logoImage} alt="logo" style={{width: "25px"}} />
                 <p className={styles.nameSuggest}>Bitcoin</p>
                 <p className={styles.titleSuggest}>BTC</p>
             </div>
@@ -74,16 +77,192 @@ export default function BasicTabs() {
             </div>
             <div className={styles.footerSuggest}>
                 <p className={styles.timeSuggest}>24h</p>
-                <p className={styles.changesSuggest}>+USD 3242.13 <span>15.20%</span></p>
+                <p className={styles.changesSuggest}>+USD 3242.13 <span><IoMdArrowDropup />15.20%</span></p>
+            </div>
+        </div>
+        <div className={styles.suggest}>
+            <div className={styles.headerSuggest}>
+                <img className={styles.logoSuggest} src={logoImage} alt="logo" style={{width: "25px"}} />
+                <p className={styles.nameSuggest}>Bitcoin</p>
+                <p className={styles.titleSuggest}>BTC</p>
+            </div>
+            <div className={styles.mainSuggest}>
+                {/* ...... usd change */}
+                <p className={styles.usdSuggest}>USD</p>
+                <p className={styles.priceSuggest}>43,180.13</p>
+            </div>
+            <div className={styles.footerSuggest}>
+                <p className={styles.timeSuggest}>24h</p>
+                <p className={styles.changesSuggest}>+USD 3242.13 <span><IoMdArrowDropup />15.20%</span></p>
+            </div>
+        </div>
+        <div className={styles.suggest}>
+            <div className={styles.headerSuggest}>
+                <img className={styles.logoSuggest} src={logoImage} alt="logo" style={{width: "25px"}} />
+                <p className={styles.nameSuggest}>Bitcoin</p>
+                <p className={styles.titleSuggest}>BTC</p>
+            </div>
+            <div className={styles.mainSuggest}>
+                {/* ...... usd change */}
+                <p className={styles.usdSuggest}>USD</p>
+                <p className={styles.priceSuggest}>43,180.13</p>
+            </div>
+            <div className={styles.footerSuggest}>
+                <p className={styles.timeSuggest}>24h</p>
+                <p className={styles.changesSuggest}>+USD 3242.13 <span><IoMdArrowDropup />15.20%</span></p>
+            </div>
+        </div>
+        <div className={styles.suggest}>
+            <div className={styles.headerSuggest}>
+                <img className={styles.logoSuggest} src={logoImage} alt="logo" style={{width: "25px"}} />
+                <p className={styles.nameSuggest}>Bitcoin</p>
+                <p className={styles.titleSuggest}>BTC</p>
+            </div>
+            <div className={styles.mainSuggest}>
+                {/* ...... usd change */}
+                <p className={styles.usdSuggest}>USD</p>
+                <p className={styles.priceSuggest}>43,180.13</p>
+            </div>
+            <div className={styles.footerSuggest}>
+                <p className={styles.timeSuggest}>24h</p>
+                <p className={styles.changesSuggest}>+USD 3242.13 <span><IoMdArrowDropup />15.20%</span></p>
             </div>
         </div>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Most profit
+      <div className={styles.suggest}>
+            <div className={styles.headerSuggest}>
+                <img className={styles.logoSuggest} src={logoImage} alt="logo" style={{width: "25px"}} />
+                <p className={styles.nameSuggest}>Bitcoin</p>
+                <p className={styles.titleSuggest}>BTC</p>
+            </div>
+            <div className={styles.mainSuggest}>
+                {/* ...... usd change */}
+                <p className={styles.usdSuggest}>USD</p>
+                <p className={styles.priceSuggest}>43,180.13</p>
+            </div>
+            <div className={styles.footerSuggest}>
+                <p className={styles.timeSuggest}>24h</p>
+                <p className={styles.changesSuggest}>+USD 3242.13 <span><IoMdArrowDropup />15.20%</span></p>
+            </div>
+        </div>
+        <div className={styles.suggest}>
+            <div className={styles.headerSuggest}>
+                <img className={styles.logoSuggest} src={logoImage} alt="logo" style={{width: "25px"}} />
+                <p className={styles.nameSuggest}>Bitcoin</p>
+                <p className={styles.titleSuggest}>BTC</p>
+            </div>
+            <div className={styles.mainSuggest}>
+                {/* ...... usd change */}
+                <p className={styles.usdSuggest}>USD</p>
+                <p className={styles.priceSuggest}>43,180.13</p>
+            </div>
+            <div className={styles.footerSuggest}>
+                <p className={styles.timeSuggest}>24h</p>
+                <p className={styles.changesSuggest}>+USD 3242.13 <span><IoMdArrowDropup />15.20%</span></p>
+            </div>
+        </div>
+        <div className={styles.suggest}>
+            <div className={styles.headerSuggest}>
+                <img className={styles.logoSuggest} src={logoImage} alt="logo" style={{width: "25px"}} />
+                <p className={styles.nameSuggest}>Bitcoin</p>
+                <p className={styles.titleSuggest}>BTC</p>
+            </div>
+            <div className={styles.mainSuggest}>
+                {/* ...... usd change */}
+                <p className={styles.usdSuggest}>USD</p>
+                <p className={styles.priceSuggest}>43,180.13</p>
+            </div>
+            <div className={styles.footerSuggest}>
+                <p className={styles.timeSuggest}>24h</p>
+                <p className={styles.changesSuggest}>+USD 3242.13 <span><IoMdArrowDropup />15.20%</span></p>
+            </div>
+        </div>
+        <div className={styles.suggest}>
+            <div className={styles.headerSuggest}>
+                <img className={styles.logoSuggest} src={logoImage} alt="logo" style={{width: "25px"}} />
+                <p className={styles.nameSuggest}>Bitcoin</p>
+                <p className={styles.titleSuggest}>BTC</p>
+            </div>
+            <div className={styles.mainSuggest}>
+                {/* ...... usd change */}
+                <p className={styles.usdSuggest}>USD</p>
+                <p className={styles.priceSuggest}>43,180.13</p>
+            </div>
+            <div className={styles.footerSuggest}>
+                <p className={styles.timeSuggest}>24h</p>
+                <p className={styles.changesSuggest}>+USD 3242.13 <span><IoMdArrowDropup />15.20%</span></p>
+            </div>
+        </div>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        lowest profit
+      <div className={styles.suggest}>
+            <div className={styles.headerSuggest}>
+                <img className={styles.logoSuggest} src={logoImage} alt="logo" style={{width: "25px"}} />
+                <p className={styles.nameSuggest}>Bitcoin</p>
+                <p className={styles.titleSuggest}>BTC</p>
+            </div>
+            <div className={styles.mainSuggest}>
+                {/* ...... usd change */}
+                <p className={styles.usdSuggest}>USD</p>
+                <p className={styles.priceSuggest}>43,180.13</p>
+            </div>
+            <div className={styles.footerSuggest}>
+                <p className={styles.timeSuggest}>24h</p>
+                <p className={styles.changesSuggest}>+USD 3242.13 <span><IoMdArrowDropup />15.20%</span></p>
+            </div>
+        </div>
+        <div className={styles.suggest}>
+            <div className={styles.headerSuggest}>
+                <img className={styles.logoSuggest} src={logoImage} alt="logo" style={{width: "25px"}} />
+                <p className={styles.nameSuggest}>Bitcoin</p>
+                <p className={styles.titleSuggest}>BTC</p>
+            </div>
+            <div className={styles.mainSuggest}>
+                {/* ...... usd change */}
+                <p className={styles.usdSuggest}>USD</p>
+                <p className={styles.priceSuggest}>43,180.13</p>
+            </div>
+            <div className={styles.footerSuggest}>
+                <p className={styles.timeSuggest}>24h</p>
+                <p className={styles.changesSuggest}>+USD 3242.13 <span><IoMdArrowDropup />15.20%</span></p>
+            </div>
+        </div>
+        <div className={styles.suggest}>
+            <div className={styles.headerSuggest}>
+                <img className={styles.logoSuggest} src={logoImage} alt="logo" style={{width: "25px"}} />
+                <p className={styles.nameSuggest}>Bitcoin</p>
+                <p className={styles.titleSuggest}>BTC</p>
+            </div>
+            <div className={styles.mainSuggest}>
+                {/* ...... usd change */}
+                <p className={styles.usdSuggest}>USD</p>
+                <p className={styles.priceSuggest}>43,180.13</p>
+            </div>
+            <div className={styles.footerSuggest}>
+                <p className={styles.timeSuggest}>24h</p>
+                <p className={styles.changesSuggest}>+USD 3242.13 <span><IoMdArrowDropup />15.20%</span></p>
+            </div>
+        </div>
+        <div className={styles.suggest}>
+            <div className={styles.headerSuggest}>
+                <img className={styles.logoSuggest} src={logoImage} alt="logo" style={{width: "25px"}} />
+                <p className={styles.nameSuggest}>Bitcoin</p>
+                <p className={styles.titleSuggest}>BTC</p>
+            </div>
+            <div className={styles.mainSuggest}>
+                {/* ...... usd change */}
+                <p className={styles.usdSuggest}>USD</p>
+                <p className={styles.priceSuggest}>43,180.13</p>
+            </div>
+            <div className={styles.footerSuggest}>
+                <p className={styles.timeSuggest}>24h</p>
+                <p className={styles.changesSuggest}>+USD 3242.13 <span><IoMdArrowDropup />15.20%</span></p>
+            </div>
+        </div>
       </TabPanel>
     </Box>
   );
 }
+
+

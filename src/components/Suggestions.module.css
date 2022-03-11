@@ -1,11 +1,13 @@
 .suggestsContainer{
     width: 100%;
-
+    display: flex;
+    padding-top: 5px;
 }
 
 .suggest div{
     display: flex;
     align-items: center;
+    width: 310px;
 }
 
 .suggest .headerSuggest .nameSuggest {
@@ -17,4 +19,51 @@
     font-weight: 600;
     color: #7D7D7D;
     
+}
+
+.suggest .mainSuggest {
+    margin: 5px 0;
+}
+.suggest .mainSuggest p{
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 700;
+}
+
+.suggest .mainSuggest .usdSuggest {
+    margin-right: 5px;
+}
+
+.suggest .footerSuggest p{
+    color: #828282;
+    font-size: .8rem;
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.suggest .footerSuggest .timeSuggest {
+    margin-right: 5px;
+    padding-right: 5px;
+    border-right: 2px solid #DDDDDD;
+}
+
+.suggest .footerSuggest .changesSuggest {
+    display: flex;
+    align-items: center;
+}
+.suggest .footerSuggest .changesSuggest span{
+    border: 1px solid #5BD18A;
+    background-color: #ECFFF3;
+    color: #54CF85;
+    padding: 3px 5px 3px 1px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+    font-size: .8rem;
+
+}
+
+.suggest .footerSuggest .changesSuggest span svg {
+    font-size: 1.2rem;
 }

@@ -1,0 +1,28 @@
+.coinsContainer {
+    margin-top: 100px;
+    height: fit-content;
+    width: 70vw;
+    background-color: #FFFFFF;
+    /* border: 1px solid #c0c0c0; */
+    border-radius: 10px;
+}
+
+.thTop{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 15px;
+    border-bottom: 2px solid #EAEAEA;
+    color: #6F6F6F ;
+}
+
+.thTop p {
+    display: flex;
+    align-items: center;
+}
+
+.thTop p svg {
+    transform: rotate(90deg);
+    margin-left: 2px;
+    font-size: 1rem;
+}

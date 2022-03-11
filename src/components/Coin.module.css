@@ -1,0 +1,50 @@
+.coinContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 15px;
+    border-bottom: 2px solid #EAEAEA;
+}
+.coinContainer p {
+    color: #6D6D6D;
+}
+
+
+.coinName{
+    text-transform: capitalize;
+    font-weight: 600;
+    width: 80px;
+    display: flex;
+    align-items: center;
+}
+.coinName .coinImage {
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+}
+
+
+.coinSymbol {
+    width: 30px;
+}
+
+.coinCurrentPrice{
+    width: 80px;
+}
+
+.coinChangePrice24h {
+    width: 30px;
+}
+
+.coinMarketCap{
+    width: 120px;
+}
+
+.redChangePrice {
+    color: #d30000;
+    font-weight: 600;
+}
+.greenChangePrice {
+    color: green;
+    font-weight: 600;
+}
