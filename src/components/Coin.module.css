@@ -7,6 +7,10 @@
 }
 .coinContainer p {
     color: #6D6D6D;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -16,6 +20,7 @@
     width: 80px;
     display: flex;
     align-items: center;
+    justify-content: flex-start !important;
 }
 .coinName .coinImage {
     width: 25px;
@@ -23,7 +28,7 @@
     margin-right: 5px;
 }
 
-
+/* 
 .coinSymbol {
     width: 30px;
 }
@@ -37,8 +42,8 @@
 }
 
 .coinMarketCap{
-    width: 120px;
-}
+    width: 120px;   
+} */
 
 .redChangePrice {
     color: #d30000;
@@ -47,4 +52,38 @@
 .greenChangePrice {
     color: green;
     font-weight: 600;
+}
+
+.coinButtons {
+    width: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
+
+.coinButtons a {
+    border: 1px solid #5896F3;
+    padding: 7px 14px;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #5896F3;
+    transition: all .3s ease-in-out;
+}
+
+.coinButtons .coinTradeBtn{
+    border-color: #858585;
+    color: #858585;
+    margin-left: 10px;
+}
+
+
+.coinButtons .coinBuyBtn:hover {
+    background-color: #5896F3;
+    color: #FFF;
+}
+
+.coinButtons .coinTradeBtn:hover {
+    background-color: #858585;
+    color: #FFF;
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -47,8 +47,18 @@ function a11yProps(index) {
   };
 }
 
-export default function BasicTabs() {
+export default function BasicTabs({coins}) {
   const [value, setValue] = React.useState(0);
+  const [suggestsCoin, setSuggestsCoin] = useState([]);
+  const [lowestCoins, setLowestCoins] = useState([]);
+  const [highestCoins, setHighestCoins] = useState([]);
+
+
+  useEffect(() => {
+    setSuggestsCoin(coins.splice(0, 4));
+    setLowestCoins(coins.sort((a, b) =>  a.current_price - b.current_price).splice(0, 4));
+    setHighestCoins(coins.sort((a, b) =>  (+b.current_price) - (+a.current_price) ).splice(0, 4));
+  }, [coins])
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -64,202 +74,75 @@ export default function BasicTabs() {
         </Tabs>
       </Box>
       <TabPanel component="div" className={styles.suggestsContainer} value={value} index={0}>
-      <div className={styles.suggest}>
+      {suggestsCoin.map((coin) => (
+        <div className={styles.suggest} key={coin.id}>
             <div className={styles.headerSuggest}>
-                <img className={styles.logoSuggest} src={logoImage} alt="logo" style={{width: "25px"}} />
-                <p className={styles.nameSuggest}>Bitcoin</p>
-                <p className={styles.titleSuggest}>BTC</p>
+                <img className={styles.logoSuggest} src={coin.image} alt="logo" style={{width: "25px"}} />
+                <p className={styles.nameSuggest}>{coin.name}</p>
+                <p className={styles.titleSuggest}>{(coin.symbol).toUpperCase()}</p>
             </div>
             <div className={styles.mainSuggest}>
                 {/* ...... usd change */}
                 <p className={styles.usdSuggest}>USD</p>
-                <p className={styles.priceSuggest}>43,180.13</p>
+                <p className={styles.priceSuggest}>{coin.current_price}</p>
             </div>
             <div className={styles.footerSuggest}>
                 <p className={styles.timeSuggest}>24h</p>
-                <p className={styles.changesSuggest}>+USD 3242.13 <span><IoMdArrowDropup />15.20%</span></p>
+                <p className={styles.changesSuggest}>+USD {(coin.price_change_24h).toFixed(2)} <span><IoMdArrowDropup />{(coin.price_change_percentage_24h).toFixed(1)}%</span></p>
             </div>
         </div>
-        <div className={styles.suggest}>
-            <div className={styles.headerSuggest}>
-                <img className={styles.logoSuggest} src={logoImage} alt="logo" style={{width: "25px"}} />
-                <p className={styles.nameSuggest}>Bitcoin</p>
-                <p className={styles.titleSuggest}>BTC</p>
-            </div>
-            <div className={styles.mainSuggest}>
-                {/* ...... usd change */}
-                <p className={styles.usdSuggest}>USD</p>
-                <p className={styles.priceSuggest}>43,180.13</p>
-            </div>
-            <div className={styles.footerSuggest}>
-                <p className={styles.timeSuggest}>24h</p>
-                <p className={styles.changesSuggest}>+USD 3242.13 <span><IoMdArrowDropup />15.20%</span></p>
-            </div>
-        </div>
-        <div className={styles.suggest}>
-            <div className={styles.headerSuggest}>
-                <img className={styles.logoSuggest} src={logoImage} alt="logo" style={{width: "25px"}} />
-                <p className={styles.nameSuggest}>Bitcoin</p>
-                <p className={styles.titleSuggest}>BTC</p>
-            </div>
-            <div className={styles.mainSuggest}>
-                {/* ...... usd change */}
-                <p className={styles.usdSuggest}>USD</p>
-                <p className={styles.priceSuggest}>43,180.13</p>
-            </div>
-            <div className={styles.footerSuggest}>
-                <p className={styles.timeSuggest}>24h</p>
-                <p className={styles.changesSuggest}>+USD 3242.13 <span><IoMdArrowDropup />15.20%</span></p>
-            </div>
-        </div>
-        <div className={styles.suggest}>
-            <div className={styles.headerSuggest}>
-                <img className={styles.logoSuggest} src={logoImage} alt="logo" style={{width: "25px"}} />
-                <p className={styles.nameSuggest}>Bitcoin</p>
-                <p className={styles.titleSuggest}>BTC</p>
-            </div>
-            <div className={styles.mainSuggest}>
-                {/* ...... usd change */}
-                <p className={styles.usdSuggest}>USD</p>
-                <p className={styles.priceSuggest}>43,180.13</p>
-            </div>
-            <div className={styles.footerSuggest}>
-                <p className={styles.timeSuggest}>24h</p>
-                <p className={styles.changesSuggest}>+USD 3242.13 <span><IoMdArrowDropup />15.20%</span></p>
-            </div>
-        </div>
+      ))}
+      
       </TabPanel>
       <TabPanel value={value} index={1}>
-      <div className={styles.suggest}>
+      {lowestCoins.map((coin) => (
+        <div className={styles.suggest} key={coin.id}>
             <div className={styles.headerSuggest}>
-                <img className={styles.logoSuggest} src={logoImage} alt="logo" style={{width: "25px"}} />
-                <p className={styles.nameSuggest}>Bitcoin</p>
-                <p className={styles.titleSuggest}>BTC</p>
+                <img className={styles.logoSuggest} src={coin.image} alt="logo" style={{width: "25px"}} />
+                <p className={styles.nameSuggest}>{coin.name}</p>
+                <p className={styles.titleSuggest}>{(coin.symbol).toUpperCase()}</p>
             </div>
             <div className={styles.mainSuggest}>
                 {/* ...... usd change */}
                 <p className={styles.usdSuggest}>USD</p>
-                <p className={styles.priceSuggest}>43,180.13</p>
+                <p className={styles.priceSuggest}>{coin.current_price}</p>
             </div>
             <div className={styles.footerSuggest}>
                 <p className={styles.timeSuggest}>24h</p>
-                <p className={styles.changesSuggest}>+USD 3242.13 <span><IoMdArrowDropup />15.20%</span></p>
+                <p className={styles.changesSuggest}>+USD {(coin.price_change_24h).toFixed(2)}
+                  <span className={styles.greenChange}><IoMdArrowDropup />
+                  {/* 
+                  
+                  zدرست کردن نشان دادن درصد با بورد مختص به خودش پ
+                  
+                  
+                  */}
+                    {(coin.price_change_percentage_24h).toFixed(1)}%
+                  </span>
+                </p>
             </div>
         </div>
-        <div className={styles.suggest}>
-            <div className={styles.headerSuggest}>
-                <img className={styles.logoSuggest} src={logoImage} alt="logo" style={{width: "25px"}} />
-                <p className={styles.nameSuggest}>Bitcoin</p>
-                <p className={styles.titleSuggest}>BTC</p>
-            </div>
-            <div className={styles.mainSuggest}>
-                {/* ...... usd change */}
-                <p className={styles.usdSuggest}>USD</p>
-                <p className={styles.priceSuggest}>43,180.13</p>
-            </div>
-            <div className={styles.footerSuggest}>
-                <p className={styles.timeSuggest}>24h</p>
-                <p className={styles.changesSuggest}>+USD 3242.13 <span><IoMdArrowDropup />15.20%</span></p>
-            </div>
-        </div>
-        <div className={styles.suggest}>
-            <div className={styles.headerSuggest}>
-                <img className={styles.logoSuggest} src={logoImage} alt="logo" style={{width: "25px"}} />
-                <p className={styles.nameSuggest}>Bitcoin</p>
-                <p className={styles.titleSuggest}>BTC</p>
-            </div>
-            <div className={styles.mainSuggest}>
-                {/* ...... usd change */}
-                <p className={styles.usdSuggest}>USD</p>
-                <p className={styles.priceSuggest}>43,180.13</p>
-            </div>
-            <div className={styles.footerSuggest}>
-                <p className={styles.timeSuggest}>24h</p>
-                <p className={styles.changesSuggest}>+USD 3242.13 <span><IoMdArrowDropup />15.20%</span></p>
-            </div>
-        </div>
-        <div className={styles.suggest}>
-            <div className={styles.headerSuggest}>
-                <img className={styles.logoSuggest} src={logoImage} alt="logo" style={{width: "25px"}} />
-                <p className={styles.nameSuggest}>Bitcoin</p>
-                <p className={styles.titleSuggest}>BTC</p>
-            </div>
-            <div className={styles.mainSuggest}>
-                {/* ...... usd change */}
-                <p className={styles.usdSuggest}>USD</p>
-                <p className={styles.priceSuggest}>43,180.13</p>
-            </div>
-            <div className={styles.footerSuggest}>
-                <p className={styles.timeSuggest}>24h</p>
-                <p className={styles.changesSuggest}>+USD 3242.13 <span><IoMdArrowDropup />15.20%</span></p>
-            </div>
-        </div>
+      ))}
       </TabPanel>
       <TabPanel value={value} index={2}>
-      <div className={styles.suggest}>
+      {highestCoins.map((coin) => (
+        <div className={styles.suggest} key={coin.id}>
             <div className={styles.headerSuggest}>
-                <img className={styles.logoSuggest} src={logoImage} alt="logo" style={{width: "25px"}} />
-                <p className={styles.nameSuggest}>Bitcoin</p>
-                <p className={styles.titleSuggest}>BTC</p>
+                <img className={styles.logoSuggest} src={coin.image} alt="logo" style={{width: "25px"}} />
+                <p className={styles.nameSuggest}>{coin.name}</p>
+                <p className={styles.titleSuggest}>{(coin.symbol).toUpperCase()}</p>
             </div>
             <div className={styles.mainSuggest}>
                 {/* ...... usd change */}
                 <p className={styles.usdSuggest}>USD</p>
-                <p className={styles.priceSuggest}>43,180.13</p>
+                <p className={styles.priceSuggest}>{coin.current_price}</p>
             </div>
             <div className={styles.footerSuggest}>
                 <p className={styles.timeSuggest}>24h</p>
-                <p className={styles.changesSuggest}>+USD 3242.13 <span><IoMdArrowDropup />15.20%</span></p>
+                <p className={styles.changesSuggest}>+USD {(coin.price_change_24h).toFixed(2)} <span><IoMdArrowDropup />{(coin.price_change_percentage_24h).toFixed(1)}%</span></p>
             </div>
         </div>
-        <div className={styles.suggest}>
-            <div className={styles.headerSuggest}>
-                <img className={styles.logoSuggest} src={logoImage} alt="logo" style={{width: "25px"}} />
-                <p className={styles.nameSuggest}>Bitcoin</p>
-                <p className={styles.titleSuggest}>BTC</p>
-            </div>
-            <div className={styles.mainSuggest}>
-                {/* ...... usd change */}
-                <p className={styles.usdSuggest}>USD</p>
-                <p className={styles.priceSuggest}>43,180.13</p>
-            </div>
-            <div className={styles.footerSuggest}>
-                <p className={styles.timeSuggest}>24h</p>
-                <p className={styles.changesSuggest}>+USD 3242.13 <span><IoMdArrowDropup />15.20%</span></p>
-            </div>
-        </div>
-        <div className={styles.suggest}>
-            <div className={styles.headerSuggest}>
-                <img className={styles.logoSuggest} src={logoImage} alt="logo" style={{width: "25px"}} />
-                <p className={styles.nameSuggest}>Bitcoin</p>
-                <p className={styles.titleSuggest}>BTC</p>
-            </div>
-            <div className={styles.mainSuggest}>
-                {/* ...... usd change */}
-                <p className={styles.usdSuggest}>USD</p>
-                <p className={styles.priceSuggest}>43,180.13</p>
-            </div>
-            <div className={styles.footerSuggest}>
-                <p className={styles.timeSuggest}>24h</p>
-                <p className={styles.changesSuggest}>+USD 3242.13 <span><IoMdArrowDropup />15.20%</span></p>
-            </div>
-        </div>
-        <div className={styles.suggest}>
-            <div className={styles.headerSuggest}>
-                <img className={styles.logoSuggest} src={logoImage} alt="logo" style={{width: "25px"}} />
-                <p className={styles.nameSuggest}>Bitcoin</p>
-                <p className={styles.titleSuggest}>BTC</p>
-            </div>
-            <div className={styles.mainSuggest}>
-                {/* ...... usd change */}
-                <p className={styles.usdSuggest}>USD</p>
-                <p className={styles.priceSuggest}>43,180.13</p>
-            </div>
-            <div className={styles.footerSuggest}>
-                <p className={styles.timeSuggest}>24h</p>
-                <p className={styles.changesSuggest}>+USD 3242.13 <span><IoMdArrowDropup />15.20%</span></p>
-            </div>
-        </div>
+      ))}
       </TabPanel>
     </Box>
   );

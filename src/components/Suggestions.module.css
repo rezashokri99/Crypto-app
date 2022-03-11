@@ -61,7 +61,18 @@
     align-items: center;
     margin-left: 5px;
     font-size: .8rem;
+}
 
+.suggest .footerSuggest .changesSuggest .redChange{
+    border: 1px solid #F57169!important;
+    background-color: #FFF2F2!important;
+    color: #F57169!important;
+    padding: 3px 5px 3px 1px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+    font-size: .8rem;
 }
 
 .suggest .footerSuggest .changesSuggest span svg {

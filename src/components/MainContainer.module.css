@@ -19,10 +19,18 @@
 .thTop p {
     display: flex;
     align-items: center;
+    width: 120px;
+    justify-content: center;
 }
 
 .thTop p svg {
     transform: rotate(90deg);
     margin-left: 2px;
     font-size: 1rem;
+    cursor: pointer;
+}
+
+.coinActions {
+    width: 130px;
+    text-align: center;
 }
