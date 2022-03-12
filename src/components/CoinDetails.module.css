@@ -1,0 +1,138 @@
+.coinContainer {
+    margin-top: -300px;
+    z-index: 30;
+    width: 70vw;
+    margin-bottom: 200px;
+    height: fit-content;
+    min-height: 220px;
+    border-radius: 25px;
+    background-color: hsl(0, 0%, 99%, .8);
+    box-shadow: 0px 10px 40px #e7e7e7;
+    padding: 50px 50px 30px;
+}
+
+.coinContent {
+    display: flex;
+    justify-content: space-between;
+}
+.coinInfo {
+    background-color: #f3f4f6;
+    width: 30%;
+    border-radius: .75rem;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.coinHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.coinLogo{
+    width: 35px;
+    margin-right: 10px;
+}
+
+.coinNameContainer .coinName {
+    text-transform: capitalize;
+}
+
+.coinNameContainer span {
+    font-size: 2rem;
+    line-height: 2rem;
+    font-weight: 700;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.coinNameContainer span:nth-child(2) {
+    margin-left: 10px;
+    color: #6b7280;
+
+}
+
+.coinMainContainer div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #dee2e6;
+    padding: 15px 4px;
+}
+
+.coinMainContainer div span:first-child {
+    color: #6D6D6D;
+}
+
+.redChangePrice {
+    color: #d30000!important;
+}
+.greenChangePrice {
+    color: green!important;
+}
+
+
+
+
+
+.coinFooter {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+    padding: 0 20px;
+}
+.coinFooter a {
+    font-size: 1.1rem;
+    border: 1px solid #5896F3;
+    padding: 8px 20px;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #5896F3;
+    transition: all .3s ease-in-out;
+}
+
+.coinFooter .coinTradeBtn{
+    border-color: #858585;
+    color: #858585;
+    margin-left: 10px;
+}
+
+
+.coinFooter .coinBuyBtn:hover {
+    background-color: #5896F3;
+    color: #FFF;
+}
+
+.coinFooter .coinTradeBtn:hover {
+    background-color: #858585;
+    color: #FFF;
+}
+
+.coinChart {
+    width: 67%;
+}
+
+
+.buttonContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+.buttonContainer a {
+    font-size: 1.1rem;
+    border: 2px solid #07234e;
+    background-color: #FFF;
+    padding: 12px 26px;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #06152c;
+    transition: all .3s ease-in-out;
+}
+.buttonContainer a:hover{
+    background-color: #07234e;
+    color: #FFF;
+}

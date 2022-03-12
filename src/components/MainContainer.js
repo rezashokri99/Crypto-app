@@ -15,7 +15,7 @@ const MainContainer = ({filteredcoins, search, setSearch}) => {
     let [highestPrice, setHighestPrice] = useState([]);
     let [highestPrice24h, setHighestPrice24h] = useState([]);
     let [lowestPrice24h, setLowestPrice24h] = useState([]);
-    // let [marketCap, setMarketCap] = useState([]);
+    let [marketCap, setMarketCap] = useState([]);
 
 
 
@@ -27,16 +27,24 @@ const MainContainer = ({filteredcoins, search, setSearch}) => {
     const HighestChange24hHandler = () => {
         setHighestChange24h(coins.sort((a, b) => b.price_change_percentage_24h - a.price_change_percentage_24h));
         setHighestPrice([]);
+        setHighestPrice24h([]);
+        setLowestPrice24h([]);
+        setMarketCap([]);
     }
 
     const HighestPricehHandler = () => {
         setHighestPrice(coins.sort((a, b) => b.current_price - a.current_price));
         setHighestChange24h([]);
+        setHighestPrice24h([]);
+        setLowestPrice24h([]);
+        setMarketCap([]);
     }
     const HighestPrice24hHandler = () => {
         setHighestPrice24h(coins.sort((a, b) => b.high_24h - a.high_24h));
         setHighestPrice([]);
         setHighestChange24h([]);
+        setLowestPrice24h([]);
+        setMarketCap([]);
     }
 
     const lowestPrice24hHandler = () => {
@@ -44,10 +52,12 @@ const MainContainer = ({filteredcoins, search, setSearch}) => {
         setHighestPrice24h([]);
         setHighestPrice([]);
         setHighestChange24h([]);
+        setMarketCap([]);
+
     }
 
     const marketCapHandler = () => {
-        // setMarketCap(coins.sort((a, b) => b.market_cap - a.market_cap))
+        setMarketCap(coins.sort((a, b) => a.market_cap_rank - b.market_cap_rank))
         setLowestPrice24h([]);
         setHighestPrice24h([]);
         setHighestPrice([]);
@@ -67,7 +77,7 @@ const MainContainer = ({filteredcoins, search, setSearch}) => {
                         <p className={styles.coinsName}>Token Name</p>
                         <p className={styles.coinsSymbol}>Symbol</p>
                         <p className={styles.coinsPrice}>Price <BiCode onClick={HighestPricehHandler} /></p>
-                        <p className={styles.coinsCurrentPrice}>24h % <BiCode onClick={HighestChange24hHandler} /></p>
+                        <p className={styles.coinsCurrentPrice}>change 24h <BiCode onClick={HighestChange24hHandler} /></p>
                         <p className={styles.coinHighChange}>High-24h <BiCode onClick={HighestPrice24hHandler} /></p>
                         <p className={styles.coinLowChange}>low-24h <BiCode onClick={lowestPrice24hHandler} /></p>
                         <p className={styles.coinMarketCap}>Market Cap <BiCode onClick={marketCapHandler} /></p>
@@ -76,7 +86,7 @@ const MainContainer = ({filteredcoins, search, setSearch}) => {
                     {
                         
                         <div className="coinsContainer">
-                        {(highestChange24h.length > 1 ? highestChange24h : highestPrice.length > 1 ? highestPrice : highestPrice24h.length > 1 ? highestPrice24h : lowestPrice24h.length > 1 ? lowestPrice24h : filteredcoins ).map((coin) => <Coin
+                        {(highestChange24h.length > 1 ? highestChange24h : highestPrice.length > 1 ? highestPrice : highestPrice24h.length > 1 ? highestPrice24h : lowestPrice24h.length > 1 ? lowestPrice24h : marketCap > 1 ? marketCap : filteredcoins ).map((coin) => <Coin
                             key={coin.id}
                             id={coin.id}
                             name={coin.id}

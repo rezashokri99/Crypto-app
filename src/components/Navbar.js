@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import styles from "./Navbar.module.css";
 import logoImage from "../images/logo.png";
+import { Link } from 'react-router-dom';
 
 
 const Navbar = () => {
@@ -23,7 +24,7 @@ const Navbar = () => {
                     <img src={logoImage} alt="logo" style={{width: "60px"}} />
                 </div>
                 <ul className={styles.listMenu}>
-                    <li><a href='#1'>Cryptocuurendy</a></li>
+                    <li><Link to={"/"}>Cryptocuurendy</Link></li>
                     <li><a href='#2'>Exchanges</a></li>
                     <li><a href='#3'>Watchlist</a></li>
                     <li><a href='#4'>NFT</a></li>

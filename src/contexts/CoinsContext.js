@@ -13,7 +13,7 @@ const CoinsContext = (props) => {
         setcoins(await getApi());
       };
       get();
-    }, [coins])
+    }, [])
 
     return (
       <apiContext.Provider value={coins}>

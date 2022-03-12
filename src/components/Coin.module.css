@@ -21,6 +21,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-start !important;
+    cursor: pointer;
 }
 .coinName .coinImage {
     width: 25px;

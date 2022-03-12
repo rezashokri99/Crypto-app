@@ -70,7 +70,7 @@ export default function BasicTabs({ coins }) {
     setHighestCoins(
       coinss.sort((a, b) => +b.current_price - +a.current_price).slice(0, 4)
     );
-  }, [coins]);
+  }, [coins, coinss]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
