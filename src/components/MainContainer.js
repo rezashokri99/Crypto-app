@@ -4,6 +4,7 @@ import styles from "./MainContainer.module.css";
 import { BiCode } from "react-icons/bi";
 import Loader from "./Loader";
 import SearchInput from './SearchInput/SearchInput';
+import { ToastContainer } from 'react-toastify';
 
 
 
@@ -14,7 +15,7 @@ const MainContainer = ({filteredcoins, search, setSearch}) => {
     let [highestPrice, setHighestPrice] = useState([]);
     let [highestPrice24h, setHighestPrice24h] = useState([]);
     let [lowestPrice24h, setLowestPrice24h] = useState([]);
-    let [marketCap, setMarketCap] = useState([]);
+    // let [marketCap, setMarketCap] = useState([]);
 
 
 
@@ -46,7 +47,7 @@ const MainContainer = ({filteredcoins, search, setSearch}) => {
     }
 
     const marketCapHandler = () => {
-        setMarketCap(coins.sort((a, b) => b.market_cap - a.market_cap))
+        // setMarketCap(coins.sort((a, b) => b.market_cap - a.market_cap))
         setLowestPrice24h([]);
         setHighestPrice24h([]);
         setHighestPrice([]);
@@ -94,6 +95,8 @@ const MainContainer = ({filteredcoins, search, setSearch}) => {
                     :
                     <Loader />
             }
+            <ToastContainer />
+
         </div>
     );
 }

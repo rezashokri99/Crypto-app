@@ -46,12 +46,10 @@
 } */
 
 .redChangePrice {
-    color: #d30000;
-    font-weight: 600;
+    color: #d30000!important;
 }
 .greenChangePrice {
-    color: green;
-    font-weight: 600;
+    color: green!important;
 }
 
 .coinButtons {
