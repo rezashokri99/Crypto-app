@@ -5,12 +5,12 @@ import Suggestions from "./Suggestions";
 
 
 
-const HeaderContainer = ({coins}) => {
+const HeaderContainer = (props) => {
     return (
         <div className={styles.headerContainer}>
             <Header />
             <div className={styles.suggestions}>
-                <Suggestions coins={coins} />
+                <Suggestions {...props} />
             </div>
         </div>
     );

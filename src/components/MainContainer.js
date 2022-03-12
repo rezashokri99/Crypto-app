@@ -1,33 +1,81 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Coin from "./Coin"
 import styles from "./MainContainer.module.css";
 import { BiCode } from "react-icons/bi";
 import Loader from "./Loader";
+import SearchInput from './SearchInput/SearchInput';
 
 
 
-const MainContainer = ({filteredcoins}) => {
+const MainContainer = ({filteredcoins, search, setSearch}) => {
+
+    let [coins, setCoins] = useState([]);
+    let [highestChange24h, setHighestChange24h] = useState([]);
+    let [highestPrice, setHighestPrice] = useState([]);
+    let [highestPrice24h, setHighestPrice24h] = useState([]);
+    let [lowestPrice24h, setLowestPrice24h] = useState([]);
+    let [marketCap, setMarketCap] = useState([]);
+
+
+
+    useEffect(() => {
+        setCoins(filteredcoins);
+
+    },[coins, filteredcoins])
+
+    const HighestChange24hHandler = () => {
+        setHighestChange24h(coins.sort((a, b) => b.price_change_percentage_24h - a.price_change_percentage_24h));
+        setHighestPrice([]);
+    }
+
+    const HighestPricehHandler = () => {
+        setHighestPrice(coins.sort((a, b) => b.current_price - a.current_price));
+        setHighestChange24h([]);
+    }
+    const HighestPrice24hHandler = () => {
+        setHighestPrice24h(coins.sort((a, b) => b.high_24h - a.high_24h));
+        setHighestPrice([]);
+        setHighestChange24h([]);
+    }
+
+    const lowestPrice24hHandler = () => {
+        setLowestPrice24h(coins.sort((a, b) => a.low_24h - b.low_24h));
+        setHighestPrice24h([]);
+        setHighestPrice([]);
+        setHighestChange24h([]);
+    }
+
+    const marketCapHandler = () => {
+        setMarketCap(coins.sort((a, b) => b.market_cap - a.market_cap))
+        setLowestPrice24h([]);
+        setHighestPrice24h([]);
+        setHighestPrice([]);
+        setHighestChange24h([]);
+    }
+
+
+
 
     return (
-        <div>
+        <div className={styles.MainContainer}>
+            <SearchInput search={search} setSearch={setSearch} />
             {
-                filteredcoins.length > 1 ?
+                filteredcoins ?
                 <div className={styles.coinsContainer}>
                     <div className={styles.thTop}>
-                        <p className={styles.coinsName}>Token Name <BiCode /></p>
+                        <p className={styles.coinsName}>Token Name</p>
                         <p className={styles.coinsSymbol}>Symbol</p>
-                        <p className={styles.coinsPrice}>Price <BiCode /></p>
-                        <p className={styles.coinsCurrentPrice}>24h %</p>
-                        <p className={styles.coinHighChange}>High-24h <BiCode /></p>
-                        <p className={styles.coinLowChange}>low-24h <BiCode /></p>
-                        <p className={styles.coinMarketCap}>Market Cap <BiCode /></p>
+                        <p className={styles.coinsPrice}>Price <BiCode onClick={HighestPricehHandler} /></p>
+                        <p className={styles.coinsCurrentPrice}>24h % <BiCode onClick={HighestChange24hHandler} /></p>
+                        <p className={styles.coinHighChange}>High-24h <BiCode onClick={HighestPrice24hHandler} /></p>
+                        <p className={styles.coinLowChange}>low-24h <BiCode onClick={lowestPrice24hHandler} /></p>
+                        <p className={styles.coinMarketCap}>Market Cap <BiCode onClick={marketCapHandler} /></p>
                         <p className={styles.coinActions}>Actions</p>
                     </div>
                     {
                         
                         <div className="coinsContainer">
-
-                        {filteredcoins.map((coin) => <Coin
+                        {(highestChange24h.length > 1 ? highestChange24h : highestPrice.length > 1 ? highestPrice : highestPrice24h.length > 1 ? highestPrice24h : lowestPrice24h.length > 1 ? lowestPrice24h : filteredcoins ).map((coin) => <Coin
                             key={coin.id}
                             id={coin.id}
                             name={coin.id}

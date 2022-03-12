@@ -1,10 +1,13 @@
+import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import "./App.css";
 import HeaderContainer from "./components/HeaderContainer";
+import Loader from "./components/Loader";
 import MainContainer from "./components/MainContainer";
-import CoinsContext from "./contexts/CoinsContext";
 
 import { apiContext } from "./contexts/CoinsContext";
+import getApi from "./services/api";
+
 
 function App() {
   
@@ -13,23 +16,27 @@ function App() {
   const [filteredcoins, setFilteredcoins] = useState([]);
 
   const coinsApi = useContext(apiContext);
-  
 
+  
   useEffect(() => {
     setCoins(coinsApi);
     
-
     const filtered = coins && coins.filter((coin) => coin.id.toLowerCase().includes(search.toLowerCase()));
-      setFilteredcoins(filtered);
-  }, [coinsApi, coins]);
-
+    setFilteredcoins(filtered);
+  }, [coinsApi, coins, search]);
+  
 
 
   return (
-      <div className="App">
-        <HeaderContainer coins={coins} />
-        <MainContainer filteredcoins={filteredcoins} />
-      </div>
+    <>
+      {
+        filteredcoins ? <div className="App">
+          <HeaderContainer coins={coins} />
+          <MainContainer filteredcoins={filteredcoins} search={search} setSearch={setSearch} />
+        </div> : 
+        <Loader />
+      }
+    </>
   );
 }
 

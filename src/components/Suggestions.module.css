@@ -51,7 +51,7 @@
     display: flex;
     align-items: center;
 }
-.suggest .footerSuggest .changesSuggest span{
+.suggest .footerSuggest .changesSuggest .greenChange{
     border: 1px solid #5BD18A;
     background-color: #ECFFF3;
     color: #54CF85;
