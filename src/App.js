@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import CoinDetails from "./components/CoinDetails";
+import Footer from "./components/Footer";
 import HeaderContainer from "./components/HeaderContainer";
 import Loader from "./components/Loader";
 import MainContainer from "./components/MainContainer";
@@ -39,6 +40,7 @@ function App() {
             <Route path="/coin/:id" element={<CoinDetails />} />
             <Route path="/*" element={<Navigate to={"/"} />} />
           </Routes>  
+          <Footer />
         </div> : 
         <Loader />
       }
