@@ -1,13 +1,28 @@
 .suggestsContainer{
     width: 100%;
-    display: flex;
+    /* display: flex; */
     padding-top: 5px;
+    /* justify-content: space-around; */
 }
+
+.suggestsContent {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+
 
 .suggest div{
     display: flex;
     align-items: center;
-    width: 310px;
+    width: 250px;
+}
+
+.headerSuggest {
+    cursor: pointer;
 }
 
 .suggest .headerSuggest .nameSuggest {
@@ -77,4 +92,23 @@
 
 .suggest .footerSuggest .changesSuggest span svg {
     font-size: 1.2rem;
+}
+
+
+
+@media (max-width: 1544px) {
+    /* .suggestsContainer{
+        grid-template-rows: 40% 40%;
+        gap: 5% 4%;  
+        
+    }
+    .suggestsContent {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        
+    } */
+
+    .suggest{
+        margin-bottom: 20px
+    }
 }

@@ -21,7 +21,7 @@ const Navbar = () => {
             
             <div className={styles.menu}>
                 <div className={styles.navbarLogo}>
-                    <img src={logoImage} alt="logo" style={{width: "60px"}} />
+                    <img src={logoImage} alt="logo" />
                 </div>
                 <ul className={styles.listMenu}>
                     <li><Link to={"/"}>Cryptocuurendy</Link></li>

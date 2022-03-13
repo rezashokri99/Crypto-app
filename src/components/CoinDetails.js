@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import styles from "./CoinDetails.module.css";
 import Notify from './Notify';
 import { Line } from 'react-chartjs-2';
@@ -104,7 +104,7 @@ const CoinDetails = () => {
         data = {
             labels: coinTimestamp,
             datasets: [{
-              label: `${id} Price in USD`,
+              label: `${id} Chart`,
               backgroundColor: "#7cb5ec",
               borderColor: "#7cb5ec",
               data: coinPrice,
@@ -125,7 +125,13 @@ const CoinDetails = () => {
         //     }
         // }
     }
+    const navigate = useNavigate();
    
+    const backToHomeHandler = () => {
+        navigate(-1);
+    }
+
+
     return (
         data && coinData ? <div className={styles.coinContainer}>
         
@@ -152,7 +158,7 @@ const CoinDetails = () => {
                                 Bitcoin Price
                             </span>
                             <span>
-                                $ {selectedCoins.current_price}
+                                $ {(selectedCoins.current_price).toLocaleString()}
                             </span>    
                         </div>
                         <div className={styles.marketCap}>
@@ -160,7 +166,7 @@ const CoinDetails = () => {
                                 Market Cap
                             </span>
                             <span>
-                                $ {selectedCoins.market_cap}
+                                $ {(selectedCoins.market_cap).toLocaleString()}
                             </span>    
                         </div>
                         <div>
@@ -184,7 +190,7 @@ const CoinDetails = () => {
                                 24h Low / 24h High
                             </span>
                             <span>
-                                $ {selectedCoins.low_24h} / $ {selectedCoins.high_24h}
+                                $ {(selectedCoins.low_24h).toLocaleString()} / $ {(selectedCoins.high_24h).toLocaleString()}
                             </span>
                         </div>
                 </div>
@@ -199,7 +205,7 @@ const CoinDetails = () => {
 
         </div>
         <div className={styles.buttonContainer}>
-            <Link to="/" >Back To Home</Link>
+            <a href='#4' onClick={backToHomeHandler}>Back To Home</a>
         </div>
 
     </div> :

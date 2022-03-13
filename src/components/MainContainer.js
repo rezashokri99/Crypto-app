@@ -8,7 +8,7 @@ import { ToastContainer } from 'react-toastify';
 
 
 
-const MainContainer = ({filteredcoins, search, setSearch}) => {
+const MainContainer = ({filteredcoins, setFilteredcoins, search, setSearch}) => {
 
     let [coins, setCoins] = useState([]);
     let [highestChange24h, setHighestChange24h] = useState([]);
@@ -21,7 +21,6 @@ const MainContainer = ({filteredcoins, search, setSearch}) => {
 
     useEffect(() => {
         setCoins(filteredcoins);
-
     },[coins, filteredcoins])
 
     const HighestChange24hHandler = () => {

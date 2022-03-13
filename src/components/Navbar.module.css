@@ -11,6 +11,10 @@
     display: flex;
 }
 
+.menu .navbarLogo img {
+	width: 60px;
+}
+
 .menu .listMenu{
     margin-left: 150px;
     display: flex;
@@ -128,6 +132,7 @@ details[open] summary:after {
 
 .list {
 	width: 100%;
+	min-height: 100px;
     list-style: none;
 	background: transparent;
 	position: absolute;
@@ -205,4 +210,115 @@ label:hover {
 }
 .list li label {
 	color: #FFF;
+}
+
+
+
+
+
+
+@media (max-width: 1460px) {
+	.menu .listMenu{
+		margin-left: 50px;
+	}
+
+	.loginButtons a{
+		padding: 10px 16px;
+		margin-right: 10px;
+	}
+
+	.menu .listMenu a {
+		margin-right: 20px;
+	}
+
+	.menu .listMenu li:nth-child(4){
+		display: none;
+	}
+	.navbarContainer{
+		padding: 50px 100px;
+	}
+}
+
+
+@media (max-width: 1140px) {
+
+	.menu .navbarLogo img {
+		width: 50px;
+	}
+	.menu .listMenu{
+		margin-left: 30px;
+	}
+
+	.loginButtons a{
+		padding: 8px 14px;
+		margin-right: 10px;
+	}
+
+	.menu .listMenu a {
+		margin-right: 15px;
+	}
+	.menu .listMenu > li:nth-child(5), .menu .listMenu > li:nth-child(3){
+		display: none;
+	}
+	.navbarContainer{
+		padding: 50px 80px;
+	}
+}
+
+
+@media (max-width: 880px) {
+	.menu .listMenu{
+		margin-left: 15px;
+	}
+	.loginButtons a{
+		padding: 7px 12px;
+		margin-right: 10px;
+	}
+	.navbarContainer{
+		padding: 40px 30px;
+	}
+}
+
+@media (max-width: 690px) {
+
+	.menu .navbarLogo img {
+		width: 40px;
+	}
+	.menu .listMenu{
+		margin-left: 5px;
+	}
+	.menu .listMenu a , details summary input[type=radio]:after {
+		font-size: .95rem;
+	}
+
+	.menu .listMenu > li{
+		width: 115px;
+	}
+	.menu .listMenu > li:nth-child(2){
+		display: none;
+	}
+	.loginButtons a{
+		padding: 6px 10px;
+		font-size: .9rem;
+		margin-right: 0px;
+	}
+	.loginButtons a:last-child{
+		display: none;
+	}
+	.navbarContainer{
+		padding: 40px 10px;
+	}
+}
+
+
+@media (max-width: 420px) {
+	.menu .navbarLogo img {
+		width: 35px;
+	}
+	.menu .listMenu > li:last-child{
+		width: 90px;
+	}
+	.navbarContainer{
+		padding: 40px 5px;
+	}
 }

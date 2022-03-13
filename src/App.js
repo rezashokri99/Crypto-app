@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import CoinDetails from "./components/CoinDetails";
 import HeaderContainer from "./components/HeaderContainer";
@@ -32,12 +32,13 @@ function App() {
   return (
     <>
       {
-        filteredcoins ? <div className="App">
+        coins.length > 1 ? <div className="App">
         <HeaderContainer coins={coins} />
-        <Routes>
-          <Route path="/" element={<MainContainer filteredcoins={filteredcoins} search={search} setSearch={setSearch} />} />
-          <Route path="/coin/:id" element={<CoinDetails />} />
-        </Routes>  
+          <Routes>
+            <Route path="/" element={<MainContainer filteredcoins={filteredcoins} setFilteredcoins={setFilteredcoins} search={search} setSearch={setSearch} />} />
+            <Route path="/coin/:id" element={<CoinDetails />} />
+            <Route path="/*" element={<Navigate to={"/"} />} />
+          </Routes>  
         </div> : 
         <Loader />
       }

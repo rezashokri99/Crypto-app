@@ -7,6 +7,7 @@ import Box from "@mui/material/Box";
 import styles from "./Suggestions.module.css";
 
 import { IoMdArrowDropup, IoMdArrowDropdown } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 
 function TabPanel(props) {
@@ -22,15 +23,10 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box style={{ padding: "20px 10px", width: "100%" }} sx={{ p: 3 }}>
+        <Box style={{ padding: "10px", width: "100%" }} sx={{ p: 3 }}>
           <Typography
+            className={styles.suggestsContent}
             component="div"
-            style={{
-              width: "100%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
           >
             {children}
           </Typography>
@@ -56,25 +52,46 @@ function a11yProps(index) {
 export default function BasicTabs({ coins }) {
   const [value, setValue] = React.useState(0);
 
-  const [coinss, setCoinss] = useState([]);
+  
+  // const [coinss, setCoinss] = useState([]);
+  let coinss = [];
+  // const [coinssHighest, setCoinssHighest] = useState([]);
+  let coinssHighest = [];
+  // const [coinssLowest, setCoinssLowest] = useState([]);
+  let coinssLowest = [];
+
   const [suggestsCoin, setSuggestsCoin] = useState([]);
   const [lowestCoins, setLowestCoins] = useState([]);
   const [highestCoins, setHighestCoins] = useState([]);
 
+  
   useEffect(() => {
-    setCoinss(coins);
-    setSuggestsCoin(coins.slice(0, 4));
+    // setCoinss(coins);
+    coinss = [...coins];
+    coinssHighest = [...coinss];
+    coinssLowest = [...coinss];
+
+    setSuggestsCoin(coinss.slice(0, 4));
     setLowestCoins(
-      coinss.sort((a, b) => a.current_price - b.current_price).slice(0, 4)
+      coinssLowest.sort((a, b) => a.current_price - b.current_price).slice(0, 4)
     );
     setHighestCoins(
-      coinss.sort((a, b) => +b.current_price - +a.current_price).slice(0, 4)
+      coinssHighest.sort((a, b) => +b.current_price - +a.current_price).slice(0, 4)
     );
-  }, [coins, coinss]);
+  }, []);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+
+  const navigate = useNavigate();
+
+  const coinDetailsHandler = (id) => {
+    navigate(`/coin/${id}`)
+  }
+
+
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -97,7 +114,7 @@ export default function BasicTabs({ coins }) {
       >
         {suggestsCoin.map((coin) => (
           <div className={styles.suggest} key={coin.id}>
-            <div className={styles.headerSuggest}>
+            <div className={styles.headerSuggest} onClick={() => coinDetailsHandler(coin.id)}>
               <img
                 className={styles.logoSuggest}
                 src={coin.image}
@@ -135,7 +152,7 @@ export default function BasicTabs({ coins }) {
       <TabPanel value={value} index={1}>
         {highestCoins.map((coin) => (
           <div className={styles.suggest} key={coin.id}>
-            <div className={styles.headerSuggest}>
+            <div className={styles.headerSuggest} onClick={() => coinDetailsHandler(coin.id)}>
               <img
                 className={styles.logoSuggest}
                 src={coin.image}
@@ -173,7 +190,7 @@ export default function BasicTabs({ coins }) {
       <TabPanel value={value} index={2}>
         {lowestCoins.map((coin) => (
           <div className={styles.suggest} key={coin.id}>
-            <div className={styles.headerSuggest}>
+            <div className={styles.headerSuggest} onClick={() => coinDetailsHandler(coin.id)}>
               <img
                 className={styles.logoSuggest}
                 src={coin.image}

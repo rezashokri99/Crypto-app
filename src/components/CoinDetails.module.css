@@ -136,3 +136,73 @@
     background-color: #07234e;
     color: #FFF;
 }
+
+
+
+
+
+
+
+
+@media (max-width: 1600px) {
+    .coinContent {
+        flex-direction: column;
+    }
+
+    .coinInfo {
+        width: 100%;
+        margin-bottom: 50px;
+    }
+
+    .coinChart {
+        order: 2;
+        width: 100%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .coinContainer{
+        width: 80vw;
+    }
+}
+
+
+@media (max-width: 800px) {
+    .coinContainer{
+        width: 90vw;
+        padding: 50px 30px 30px;
+    }
+}
+
+
+
+@media (max-width: 650px) {
+    .coinNameContainer span {
+        font-size: 1.5rem;
+    }
+
+    .coinMainContainer div span {
+        font-size: .9rem;
+    }
+
+}
+
+@media (max-width: 560px) {
+    .coinContainer{
+        width: 95vw;
+        padding: 50px 20px 30px;
+    }
+
+    .coinMainContainer div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .coinMainContainer div span {
+        font-size: 1rem;
+    }
+
+    .coinMainContainer div span:first-child {
+        margin-bottom: 10px;
+    }
+}

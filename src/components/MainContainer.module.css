@@ -40,3 +40,68 @@
     width: 130px;
     text-align: center;
 }
+
+
+
+
+
+@media (max-width: 1600px) {
+    .thTop .coinMarketCap {
+        display: none;
+    }
+    .coinsContainer {
+        width: 80vw;
+    }
+    
+}
+
+
+@media (max-width: 1200px) {
+    .thTop .coinHighChange, .thTop .coinLowChange {
+        display: none;
+    }
+    .coinsContainer {
+        width: 90vw;
+    }
+}
+
+@media (max-width: 840px) {
+    .coinsContainer {
+        width: 95vw;
+    }
+    .thTop{
+        padding: 25px 5px;
+    }
+    
+    .thTop p:last-child {
+        width: 90px;
+    }
+
+}
+
+
+@media (max-width: 520px) {
+    /* .thTop p:nth-child(4) {
+        width: 80px;
+    } */
+    .thTop p:last-child {
+        display: none;
+    }
+    .MainContainer{
+        margin-top: 300px;
+    }
+}
+
+
+@media (max-width: 440px) {
+    .thTop p:nth-child(4) {
+        width: 80px;
+    }
+
+}
+
+@media (max-width: 380px) {
+    .MainContainer{
+        margin-top: 400px;
+    }
+}

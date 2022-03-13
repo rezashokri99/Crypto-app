@@ -86,3 +86,48 @@
     background-color: #858585;
     color: #FFF;
 }
+
+
+
+@media (max-width: 1600px) {
+    .coinContainer .coinMarketCap {
+        display: none;
+    }
+
+    .coinButtons .coinTradeBtn{
+        margin-left: 5px;
+    }
+
+}
+
+@media (max-width: 1200px) {
+    .coinContainer .coinHighChange , .coinContainer .coinLowChange {
+        display: none;
+    }
+
+    .coinButtons .coinTradeBtn{
+        margin-left: 5px;
+    }
+
+}
+
+@media (max-width: 840px) {
+    .coinContainer .coinHighChange , .coinContainer .coinLowChange {
+        display: none;
+    }
+
+    .coinButtons .coinTradeBtn{
+        margin-left: 5px;
+        display: none;
+    }
+
+    .coinContainer .coinButtons {
+        width: 90px;
+    }
+}
+
+@media (max-width: 520px) {
+    .coinButtons{
+        display: none;
+    }
+}
