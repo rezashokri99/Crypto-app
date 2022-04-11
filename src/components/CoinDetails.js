@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import styles from "./CoinDetails.module.css";
 import Notify from './Notify';
 import { Line } from 'react-chartjs-2';
 import axios from 'axios';
-import { apiContext } from '../contexts/CoinsContext';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -17,6 +16,7 @@ import {
   } from 'chart.js'
   import { Chart } from 'react-chartjs-2'
 import { ToastContainer } from 'react-toastify';
+import { useSelector } from 'react-redux';
   
   ChartJS.register(
     CategoryScale,
@@ -40,7 +40,9 @@ const CoinDetails = () => {
     let options = [];
     
     const { id } = useParams();
-    const selectedCoins = coinss && coinss.find((coin) => coin.id === id);
+    const coinsApi = useSelector(state => state.coins);
+
+    const selectedCoins = coinsApi && coinsApi.find((coin) => coin.id === id);
     
     
     const buyHandler = (e) => {
@@ -49,9 +51,10 @@ const CoinDetails = () => {
     }
     
     
-    const coinsApi = useContext(apiContext);
+    // const coinsApi = useContext(apiContext);
+
     useEffect(() => {
-        setCoinss(coinsApi);
+        
         axios.get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=30&interval=daily`)
         .then((response) => setCoinData(response.data));
     }, [])

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import CoinDetails from "./components/CoinDetails";
@@ -8,33 +8,36 @@ import HeaderContainer from "./components/HeaderContainer";
 import Loader from "./components/Loader";
 import MainContainer from "./components/MainContainer";
 
-import { apiContext } from "./contexts/CoinsContext";
-import getApi from "./services/api";
+import {  useDispatch, useSelector } from "react-redux";
+import { fetchCoins } from "./redux/getCoins.js/getCoinsAction";
+
 
 
 function App() {
   
-  const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState("");
   const [filteredcoins, setFilteredcoins] = useState([]);
 
-  const coinsApi = useContext(apiContext);
-
+  const dispatch = useDispatch();
+  const coinsApi = useSelector(state => state);
   
   useEffect(() => {
-    setCoins(coinsApi);
+    dispatch(fetchCoins());
+  }, [])
+
+  useEffect(() => {
     
-    const filtered = coins && coins.filter((coin) => coin.id.toLowerCase().includes(search.toLowerCase()));
+    const filtered = coinsApi.coins && coinsApi.coins.filter((coin) => coin.id.toLowerCase().includes(search.toLowerCase()));
     setFilteredcoins(filtered);
-  }, [coinsApi, coins, search]);
+  }, [coinsApi, search]);
   
 
 
   return (
     <>
       {
-        coins.length > 1 ? <div className="App">
-        <HeaderContainer coins={coins} />
+        coinsApi.coins.length > 1 ? <div className="App">
+        <HeaderContainer coins={coinsApi.coins} />
           <Routes>
             <Route path="/" element={<MainContainer filteredcoins={filteredcoins} setFilteredcoins={setFilteredcoins} search={search} setSearch={setSearch} />} />
             <Route path="/coin/:id" element={<CoinDetails />} />
